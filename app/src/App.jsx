@@ -14,13 +14,13 @@ import NotFound from './pages/NotFound';
 
 function App() {
   return (
-    <div>
-      <div className="bg-black">
+    <div className="mb-4">
+      <div className="shadow-md">
         <div className="container px-2 mx-auto">
           <Navbar />
         </div>
       </div>
-      <div className="container px-2 mx-auto">
+      <div className="container px-2 mx-auto mt-8">
         <Router>
           <Routes>
             <Route path="/" element={<Home />}>

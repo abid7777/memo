@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
+import PostCardList from '../organisms/PostCardList/PostCardList';
 
 function Home() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/v1/post')
+      .then((res) => res.json())
+      .then(({ posts: p }) => setPosts(p))
+      .catch(() => setPosts([]));
+  }, []);
+
   return (
-    <div>Home</div>
+    <div>
+      <PostCardList posts={posts} />
+    </div>
   );
 }
 
