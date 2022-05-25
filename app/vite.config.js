@@ -18,7 +18,7 @@ export default defineConfig({
       inject: {
         data: {
           title: 'Memo',
-          injectScript: '<script type="module" src="./src/index.jsx"></script>',
+          injectScript: '<script type="module" src="/src/index.jsx"></script>',
         },
         tags: [
           {
@@ -45,4 +45,5 @@ export default defineConfig({
       },
     },
   },
+  css: { postcss: './postcss.config.js' },
 });
