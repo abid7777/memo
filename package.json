@@ -1,0 +1,7 @@
+{
+  "name": "memo-workspace",
+  "workspaces": [
+    "api",
+    "app"
+  ]
+}
