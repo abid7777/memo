@@ -35,6 +35,9 @@ export default defineConfig({
   ],
   server: {
     base: '/public/',
+    // watch: {
+    //   ignored: ['./src/mirage/**/*'],
+    // },
   },
   build: {
     minify: 'terser',

@@ -15,29 +15,29 @@ import NotFound from './pages/NotFound';
 function App() {
   return (
     <div className="mb-4">
-      <div className="shadow-md">
-        <div className="container px-2 mx-auto">
-          <Navbar />
+      <Router>
+        <div className="shadow-md">
+          <div className="container px-2 mx-auto">
+            <Navbar />
+          </div>
         </div>
-      </div>
-      <div className="container px-2 mx-auto mt-8">
-        <Router>
+        <div className="container px-2 mx-auto mt-8">
           <Routes>
-            <Route path="/" element={<Home />}>
-              <Route path="/posts" element={<Posts />}>
-                <Route path=":id" element={<PostDetail />} />
-              </Route>
-              <Route path="/creators" element={<Creators />}>
-                <Route path=":id" element={<CreatorPosts />} />
-              </Route>
-              <Route path="/tags/:id" element={<TagPosts />} />
+            <Route path="/" index element={<Home />} />
+            <Route path="posts">
+              <Route index element={<Posts />} />
+              <Route path=":postID" element={<PostDetail />} />
             </Route>
+            <Route path="/creators" element={<Creators />}>
+              <Route path=":id" element={<CreatorPosts />} />
+            </Route>
+            <Route path="/tags/:id" element={<TagPosts />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/me" element={<Me />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </Router>
-      </div>
+        </div>
+      </Router>
     </div>
   );
 }

@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
-
-import PostCardList from '../organisms/PostCardList/PostCardList';
+import React, { useState, useEffect } from 'react';
+import TrendingPostList from '../templates/TrendingPostList';
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -14,7 +13,7 @@ function Home() {
 
   return (
     <div>
-      <PostCardList posts={posts} />
+      <TrendingPostList posts={posts} />
     </div>
   );
 }

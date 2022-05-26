@@ -14,13 +14,7 @@ function PostCardList({ posts }) {
 }
 
 PostCardList.propTypes = {
-  posts: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string,
-    desc: PropTypes.string,
-    image: PropTypes.string,
-    likes: PropTypes.string,
-    likedByMe: PropTypes.bool,
-  })).isRequired,
+  posts: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export default PostCardList;

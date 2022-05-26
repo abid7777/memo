@@ -8,4 +8,10 @@ export default Object.freeze({
   likes: _property('likes'),
   likedByMe: _property('likedByMe'),
   comments: _property('comments'),
+  commentsCount: _property('commentsCount'),
+  likesCount: _property('likesCount'),
+  createdAt: _property('createdAt'),
+  updatedAt: _property('updatedAt'),
+  authorName: _property('author.name'),
+  authorAvatar: _property('author.avatar'),
 });
