@@ -12,12 +12,12 @@ function Post({ post }) {
       <div className="flex gap-3 items-center">
         <div className="overflow-hidden w-12 h-12 rounded-full">
           <Image
-            src={postReader.authorAvatar(postReader)}
-            alt={postReader.authorName(postReader)}
+            src={postReader.authorAvatar(post)}
+            alt={postReader.authorName(post)}
           />
         </div>
         <div>
-          <h3 className="text-xl">{postReader.authorName(postReader)}</h3>
+          <h3 className="text-xl">{postReader.authorName(post)}</h3>
           <RelativeDate dateTime={postReader.createdAt(post)} />
         </div>
       </div>
@@ -29,9 +29,7 @@ function Post({ post }) {
         likes={postReader.likesCount(post)}
         comments={postReader.commentsCount(post)}
       />
-      <div className="pb-8 mt-8 border-b border-b-gray-200">
-        {postReader.desc(post)}
-      </div>
+      <div className="mt-8">{postReader.desc(post)}</div>
     </div>
   );
 }

@@ -1,3 +1,2 @@
-import PostCard from './PostCard';
-
-export default PostCard;
+export { default as VerticalPostCard } from './variants/VerticalPostCard';
+export { default as HorizontalPostCard } from './variants/HorizontalPostCard';

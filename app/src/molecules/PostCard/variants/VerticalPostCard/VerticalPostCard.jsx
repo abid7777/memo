@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import PostMetaInfo from '../PostMetaInfo';
-import postReader from '../../readers/post.reader';
+import PostMetaInfo from '../../../PostMetaInfo';
+import postReader from '../../../../readers/post.reader';
 
-function PostCard({ post }) {
+function VerticalPostCard({ post }) {
   return (
     <Link
       to={`/posts/${postReader.id(post)}`}
@@ -29,8 +29,8 @@ function PostCard({ post }) {
   );
 }
 
-PostCard.propTypes = {
+VerticalPostCard.propTypes = {
   post: PropTypes.shape({}).isRequired,
 };
 
-export default PostCard;
+export default VerticalPostCard;

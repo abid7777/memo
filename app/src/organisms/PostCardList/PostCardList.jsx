@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import _map from 'lodash/map';
 
-import PostCard from '../../molecules/PostCard/PostCard';
+import { VerticalPostCard as PostCard } from '../../molecules/PostCard';
 import postReader from '../../readers/post.reader';
 
 function PostCardList({ posts }) {

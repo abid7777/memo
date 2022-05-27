@@ -4,7 +4,7 @@ import React from 'react';
 
 import PostCardList from '../organisms/PostCardList/PostCardList';
 
-function TrendingPostList({ posts }) {
+function TrendingPostListTemplate({ posts }) {
   return (
     <div>
       <div>
@@ -13,19 +13,17 @@ function TrendingPostList({ posts }) {
           <sup><HiTrendingUp /></sup>
         </h3>
       </div>
-      <div className="mt-8">
-        <PostCardList posts={posts} />
-      </div>
+      <div className="mt-8"><PostCardList posts={posts} /></div>
     </div>
   );
 }
 
-TrendingPostList.propTypes = {
+TrendingPostListTemplate.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
-TrendingPostList.defaultProps = {
+TrendingPostListTemplate.defaultProps = {
   posts: [],
 };
 
-export default TrendingPostList;
+export default TrendingPostListTemplate;

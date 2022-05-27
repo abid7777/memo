@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import TrendingPostList from '../templates/TrendingPostList';
+import TrendingPostList from '../templates/TrendingPostList.template';
 
 function Home() {
   const [posts, setPosts] = useState([]);

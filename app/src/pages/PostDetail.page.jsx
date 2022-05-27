@@ -1,32 +1,28 @@
 import { useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 
-import Post from '../organisms/Post';
-import PostCommentList from '../organisms/PostCommentList';
+import PostDetailTemplate from '../templates/PostDetail.template';
 
 function PostDetail() {
   const { postID } = useParams();
   const [post, setPost] = useState(null);
+  const [relatedPosts, setRelatedPosts] = useState([]);
 
   useEffect(() => {
     fetch(`/api/v1/post/${postID}`)
       .then((res) => res.json())
       .then((res) => setPost(res.post))
       .catch(() => setPost(null));
-  }, []);
+
+    fetch('/api/v1/post/related')
+      .then((res) => res.json())
+      .then((res) => setRelatedPosts(res.posts))
+      .catch(() => setRelatedPosts([]));
+  }, [postID]);
 
   if (!post) { return 'Loading'; }
 
-  const { comments = [] } = post;
-
-  return (
-    <div>
-      <div className="w-full md:w-4/6">
-        <Post post={post} />
-        <PostCommentList comments={comments} />
-      </div>
-    </div>
-  );
+  return <PostDetailTemplate post={post} relatedPosts={relatedPosts} />;
 }
 
 export default PostDetail;

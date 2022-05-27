@@ -7,7 +7,7 @@ import Comment from '../../molecules/Comment';
 function PostCommentList({ comments }) {
   return (
     <div>
-      <div className="mt-8 text-xl font-bold">Comments</div>
+      <div className="text-xl font-bold">Comments</div>
       <div className="flex flex-col gap-8 mt-8">
         {_map(comments, (comment) => <Comment comment={comment} />)}
       </div>
