@@ -1,6 +1,7 @@
 export const VARIANTS = Object.freeze({
   PRIMARY: 0,
-  LINK: 1,
+  DANGER: 1,
+  LINK: 2,
 });
 
 export const STYLES = Object.freeze({

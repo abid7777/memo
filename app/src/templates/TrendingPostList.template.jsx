@@ -2,6 +2,7 @@ import { HiTrendingUp } from 'react-icons/hi';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import Badge from '../atoms/Badge';
 import PostCardList from '../organisms/PostCardList/PostCardList';
 
 function TrendingPostListTemplate({ posts }) {
@@ -10,10 +11,11 @@ function TrendingPostListTemplate({ posts }) {
       <div>
         <h3 className="flex text-3xl cursor-auto select-none md:text-4xl">
           Trending Posts
+          <Badge count={posts.length} />
           <sup><HiTrendingUp /></sup>
         </h3>
       </div>
-      <div className="mt-8"><PostCardList posts={posts} /></div>
+      <div className="mt-8 "><PostCardList posts={posts} /></div>
     </div>
   );
 }

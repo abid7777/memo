@@ -6,7 +6,7 @@ import PageSpinner from '../molecules/PageSpinner';
 export default function withSuspenseHOC(Component, fallback) {
   return function withSuspense(props) {
     return (
-      <Suspense fallback={fallback || <PageSpinner />}>
+      <Suspense fallback={typeof fallback !== 'undefined' ? fallback : <PageSpinner />}>
         <Component {...props} />
       </Suspense>
     );

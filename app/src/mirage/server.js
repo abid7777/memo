@@ -16,7 +16,7 @@ export default function create$erver() {
     serializers: {
       application: ApplicationSerializer,
       post: ApplicationSerializer.extend({
-        include: ['author', 'comments'],
+        include: ['author'],
         embed: true,
       }),
       comment: ApplicationSerializer.extend({

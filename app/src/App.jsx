@@ -18,7 +18,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <div className="mb-4">
         <Router>
-          <div className="fixed top-0 left-0 z-50 w-full bg-slate-50/75 shadow-md backdrop-blur-lg">
+          <div className="fixed top-0 left-0 z-30 w-full bg-slate-50/75 shadow-md backdrop-blur-lg">
             <div className="container px-2 mx-auto"><Navbar /></div>
           </div>
           <div className="container px-2 mx-auto mt-[calc(80px+2rem)]">

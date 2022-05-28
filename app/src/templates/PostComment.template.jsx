@@ -1,57 +1,55 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
-import cx from 'classnames';
+import React from 'react';
+import _get from 'lodash/get';
 
+import { TRANSITION } from '../App.constants';
 import CommentForm from '../molecules/CommentForm';
 import PostCommentList from '../organisms/PostCommentList';
-import PropertyControlledComponent from '../atoms/PropertyControlledComponent';
+import Spinner from '../atoms/Spinner';
+import useComment from '../hooks/api/useComment';
+import withReactQueryErrorBoundaryHOC from '../hocs/withReactQueryErrorBoundary';
+import withSuspenseHOC from '../hocs/withSuspense';
 
-import useResize from '../hooks/useResize';
+const variants = {
+  hidden: { opacity: 0, transition: TRANSITION },
+  visible: { opacity: 1, transition: TRANSITION },
+};
 
-function PostCommentTemplate({ comments }) {
-  const { isMobileDevice } = useResize();
-  const [isCommentVisible, setIsCommentVisible] = useState(!isMobileDevice);
+function CommentSpinner() {
+  return <div className="flex justify-center items-center mt-8 lg:mt-0"><Spinner /></div>;
+}
 
-  useEffect(() => setIsCommentVisible(!isMobileDevice), [isMobileDevice]);
+function PostCommentTemplate({ postID, isMobileDevice }) {
+  const { data } = useComment(postID);
 
   return (
-    <AnimatePresence>
-      {/* <PropertyControlledComponent shouldRender={isCommentVisible}> */}
-      {isCommentVisible && (
-      <>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          exit={{ opacity: 0 }}
-          className={cx({ 'fixed top-0 left-0 z-40 w-screen h-screen bg-gray-800/50 backdrop-blur-lg': isMobileDevice })}
-        />
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          exit={{ y: '100%', opacity: 0 }}
-          className={cx({ 'overflow-auto fixed inset-x-0 bottom-0 z-50 m-auto w-[95%] h-[90%] bg-stone-50 rounded-t-lg shadow-2xl': isMobileDevice })}
-        >
-          <div className="m-4">
-            <div className="mt-8">
-              <CommentForm isMobileDevice={isMobileDevice} />
-            </div>
-            <div className="mt-8">
-              <PostCommentList comments={comments} />
-            </div>
-          </div>
-        </motion.div>
-      </>
-      )}
-      {/* </PropertyControlledComponent> */}
-    </AnimatePresence>
+    <motion.div
+      variants={variants}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      className="m-4"
+    >
+      <div className="mt-8">
+        <CommentForm isMobileDevice={isMobileDevice} />
+      </div>
+      <div className="mt-8">
+        <PostCommentList comments={_get(data, 'comments')} />
+      </div>
+    </motion.div>
   );
 }
 
 PostCommentTemplate.propTypes = {
-  comments: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  postID: PropTypes.string.isRequired,
+  isMobileDevice: PropTypes.bool,
 };
 
-export default PostCommentTemplate;
+PostCommentTemplate.defaultProps = {
+  isMobileDevice: false,
+};
+
+export default withReactQueryErrorBoundaryHOC(
+  withSuspenseHOC(PostCommentTemplate, <CommentSpinner />),
+);

@@ -1,25 +1,47 @@
-import { motion } from 'framer-motion';
+/* eslint-disable react/jsx-props-no-spreading */
+
 import PropTypes from 'prop-types';
 import React from 'react';
+import _noop from 'lodash/noop';
 
-function Backdrop({ className }) {
+const DEFAULT_PROPS = {
+  'aria-label': 'close backdrop',
+  role: 'button',
+  tabIndex: 0,
+  className: 'fixed top-0 left-0 z-40 w-screen h-screen bg-gray-800/50 backdrop-blur-lg',
+};
+
+function div({ ...props }) {
+  return <div {...props} />;
+}
+
+function Backdrop({
+  as, className, onClick, ...restProps
+}) {
+  const Component = as || div;
+
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      exit={{ opacity: 0 }}
-      className={`fixed top-0 left-0 z-40 w-screen h-screen bg-gray-800/50 backdrop-blur-lg ${className}`}
+    <Component
+      {...DEFAULT_PROPS}
+      className={`${DEFAULT_PROPS.className} ${className}`}
+      {...restProps}
+      onClick={onClick}
+      onTouchStart={onClick}
+      onKeyDown={onClick}
     />
   );
 }
 
 Backdrop.propTypes = {
+  as: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   className: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 Backdrop.defaultProps = {
+  as: null,
   className: '',
+  onClick: _noop,
 };
 
 export default Backdrop;

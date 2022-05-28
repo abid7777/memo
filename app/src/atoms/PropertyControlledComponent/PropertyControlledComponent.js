@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 function PropertyControlledComponent({ children, shouldRender }) {
-  return shouldRender && children;
+  return shouldRender ? children : null;
 }
 
 PropertyControlledComponent.propTypes = {
