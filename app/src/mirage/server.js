@@ -3,6 +3,7 @@
 
 import {
   Factory, Model, Serializer, createServer, belongsTo, hasMany,
+  // Response
 } from 'miragejs';
 import { faker } from '@faker-js/faker';
 
@@ -61,12 +62,26 @@ export default function create$erver() {
         return users.create(user);
       });
       this.get('/post', () => this.schema.posts.all());
+      this.get(
+        'post/trending',
+        () => this.schema.posts.all().slice(0, 10)
+        // 10 + Math.floor(Math.random() * 10)
+        // new Response(400, {}, { errors: ['invalid request'] })
+        // this.schema.posts.all().slice(0, 10 + Math.floor(Math.random() * 10));
+        ,
+      );
       this.get('/post/:postID', ({ posts }, req) => {
         const { postID } = req.params;
 
         return posts.findBy({ _id: postID });
       });
-      this.get('/post/related', () => this.schema.posts.all());
+      this.get('/post/:postID/comments', (_, req) => {
+        const { postID } = req.params;
+        const post = this.schema.posts.findBy({ _id: postID });
+
+        return post ? post.comments : [];
+      });
+      this.post('/post/related', () => this.schema.posts.all());
     },
   });
 }

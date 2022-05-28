@@ -14,7 +14,7 @@ export default {
   updatedAt: faker.date.past(),
   afterCreate(post, server) {
     const author = server.create('user');
-    const comments = server.createList('comment', 54, 'withAuthor').map((comment) => {
+    const comments = server.createList('comment', 5, 'withAuthor').map((comment) => {
       comment.update({ post });
       comment.save();
 

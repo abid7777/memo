@@ -7,7 +7,7 @@ import postReader from '../../readers/post.reader';
 
 function PostCardList({ posts }) {
   return (
-    <div className="flex flex-wrap gap-5 justify-evenly">
+    <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
       {_map(posts, (post) => <PostCard post={post} key={postReader.id(post)} />)}
     </div>
   );

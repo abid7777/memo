@@ -9,7 +9,7 @@ function VerticalPostCard({ post }) {
   return (
     <Link
       to={`/posts/${postReader.id(post)}`}
-      className="flex overflow-hidden flex-col w-full hover:bg-slate-50 rounded-md shadow-lg transition-colors cursor-pointer md:w-1/3 lg:w-1/4 2xl:w-1/6"
+      className="flex overflow-hidden flex-col w-full hover:bg-slate-50 rounded-md shadow-lg transition-colors cursor-pointer"
     >
       <div
         className="postcard-image"

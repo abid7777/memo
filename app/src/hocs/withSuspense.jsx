@@ -1,0 +1,14 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
+import React, { Suspense } from 'react';
+import PageSpinner from '../molecules/PageSpinner';
+
+export default function withSuspenseHOC(Component, fallback) {
+  return function withSuspense(props) {
+    return (
+      <Suspense fallback={fallback || <PageSpinner />}>
+        <Component {...props} />
+      </Suspense>
+    );
+  };
+}
