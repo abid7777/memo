@@ -15,14 +15,14 @@ function HomeErrorDialog({ resetErrorBoundary }) {
   );
 }
 
-HomeErrorDialog.propTypes = {
-  resetErrorBoundary: PropTypes.func.isRequired,
-};
-
 function Home() {
   const { data } = useTrendingPost();
 
   return <TrendingPostList posts={_get(data, 'posts')} />;
 }
 
-export default _flowRight(withSuspense, withReactQueryErrorBoundary)(Home, HomeErrorDialog);
+HomeErrorDialog.propTypes = {
+  resetErrorBoundary: PropTypes.func.isRequired,
+};
+
+export default _flowRight(withSuspense, withReactQueryErrorBoundary)(Home, Home);

@@ -9,7 +9,8 @@ function PostCommentList({ comments }) {
     <div>
       <div className="text-xl font-bold">Comments</div>
       <div className="flex flex-col gap-8 mt-8">
-        {_map(comments, (comment) => <Comment comment={comment} />)}
+        {/* eslint-disable-next-line no-underscore-dangle */}
+        {_map(comments, (comment) => <Comment comment={comment} key={comment._id} />)}
       </div>
     </div>
   );

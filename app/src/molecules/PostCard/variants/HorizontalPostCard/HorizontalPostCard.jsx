@@ -10,7 +10,7 @@ function HorizontalPostCard({ post }) {
   return (
     <Link
       to={`/posts/${postReader.id(post)}`}
-      className="flex gap-5 w-full hover:bg-slate-50 rounded-md border border-gray-200 shadow-lg transition-colors cursor-pointer md:w-5/12 lg:w-full"
+      className="flex gap-5 w-full hover:bg-slate-50 rounded-md border border-gray-200 shadow-lg transition-colors cursor-pointer"
     >
       <div className="shrink-0 w-32 h-32">
         <Image src={postReader.image(post)} alt={postReader.title(post)} className="h-full" />

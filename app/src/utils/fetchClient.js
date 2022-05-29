@@ -7,25 +7,21 @@ const contentTypeParsers = Object.freeze({
 });
 
 export default async function fetchClient(url, options = {}) {
-  try {
-    const data = await fetch(url, options);
-    const parsedData = await _get(
-      contentTypeParsers,
-      data.headers.get('content-type'),
-      contentTypeParsers.default,
-    )(data);
+  const data = await fetch(url, options);
+  const parsedData = await _get(
+    contentTypeParsers,
+    data.headers.get('content-type'),
+    contentTypeParsers.default,
+  )(data);
 
-    if (data.status < 200 || data.status > 299) {
-      const error = Object.create(null);
-      error.message = parsedData;
-      error.statusCode = data.status;
-      error.isError = true;
+  if (data.status < 200 || data.status > 299) {
+    const error = Object.create(null);
+    error.message = parsedData;
+    error.statusCode = data.status;
+    error.isError = true;
 
-      throw error;
-    }
-
-    return parsedData;
-  } catch (err) {
-    throw err.message;
+    throw error;
   }
+
+  return parsedData;
 }

@@ -8,8 +8,8 @@ import CommentForm from '../molecules/CommentForm';
 import PostCommentList from '../organisms/PostCommentList';
 import Spinner from '../atoms/Spinner';
 import useComment from '../hooks/api/useComment';
-import withReactQueryErrorBoundaryHOC from '../hocs/withReactQueryErrorBoundary';
-import withSuspenseHOC from '../hocs/withSuspense';
+import withReactQueryErrorBoundary from '../hocs/withReactQueryErrorBoundary';
+import withSuspense from '../hocs/withSuspense';
 
 const variants = {
   hidden: { opacity: 0, transition: TRANSITION },
@@ -50,6 +50,7 @@ PostCommentTemplate.defaultProps = {
   isMobileDevice: false,
 };
 
-export default withReactQueryErrorBoundaryHOC(
-  withSuspenseHOC(PostCommentTemplate, <CommentSpinner />),
+export default withReactQueryErrorBoundary(
+  withSuspense(PostCommentTemplate, <CommentSpinner />),
+  () => console.log('??'),
 );

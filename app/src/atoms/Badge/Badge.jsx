@@ -4,7 +4,7 @@ import React from 'react';
 function Badge({ count }) {
   return (
     <div className="flex justify-center items-center w-6 h-6 text-xs text-slate-50 bg-red-600 rounded-full">
-      {count}
+      {count > 99 ? '99+' : count}
     </div>
   );
 }

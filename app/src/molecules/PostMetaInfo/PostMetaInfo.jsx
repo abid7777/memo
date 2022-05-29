@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import millify from 'millify';
+import _noop from 'lodash/noop';
 
 import PostMetaInfoItem from '../../atoms/PostMetaInfoItem';
 
-function PostMetaInfo({ likes, comments, isLikedByMe }) {
+function PostMetaInfo({
+  likes, comments, className, isLikedByMe, onLikeClick, onCommentClick,
+}) {
   return (
-    <div className="flex justify-between mt-4">
-      <PostMetaInfoItem>
+    <div className={`flex justify-between mt-4 ${className}`}>
+      <PostMetaInfoItem onClick={onLikeClick}>
         <FaHeart
           className={cx(
             'w-8 peer text-gray-400 group-hover:text-red-600',
@@ -20,7 +23,7 @@ function PostMetaInfo({ likes, comments, isLikedByMe }) {
           {millify(likes)}
         </span>
       </PostMetaInfoItem>
-      <PostMetaInfoItem>
+      <PostMetaInfoItem onClick={onCommentClick}>
         <FaCommentAlt
           className="w-8 text-gray-400 group-hover:text-blue-600"
         />
@@ -35,13 +38,19 @@ function PostMetaInfo({ likes, comments, isLikedByMe }) {
 PostMetaInfo.propTypes = {
   likes: PropTypes.string,
   comments: PropTypes.string,
+  className: PropTypes.string,
   isLikedByMe: PropTypes.bool,
+  onLikeClick: PropTypes.func,
+  onCommentClick: PropTypes.func,
 };
 
 PostMetaInfo.defaultProps = {
   likes: '0',
   comments: '0',
+  className: '',
   isLikedByMe: false,
+  onLikeClick: _noop,
+  onCommentClick: _noop,
 };
 
 export default PostMetaInfo;
