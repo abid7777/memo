@@ -27,7 +27,6 @@ function Backdrop({
       {...restProps}
       onClick={onClick}
       onTouchStart={onClick}
-      onKeyDown={onClick}
     />
   );
 }

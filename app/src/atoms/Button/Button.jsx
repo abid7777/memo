@@ -18,6 +18,7 @@ function Button({
         className,
       )}
       onClick={onClick}
+      onTouchStart={onClick}
     >
       {children}
     </button>

@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import React, { useRef } from 'react';
 import _noop from 'lodash/noop';
 
-import Label from '../../atoms/Label';
-import Textarea from '../../atoms/Textarea';
+import Label from '../../../atoms/Label';
+import Textarea from '../../../atoms/Textarea';
 
 function TextareaField({ ref, onInput }) {
   const forwardRef = ref || useRef(null);
@@ -12,7 +12,7 @@ function TextareaField({ ref, onInput }) {
     <div className="relative">
       <Textarea
         forwardRef={forwardRef}
-        textareaClass="textarea"
+        textareaClassName="textarea"
         onInput={(value) => {
           if (forwardRef.current) { forwardRef.current.setAttribute('data-value', value); }
 

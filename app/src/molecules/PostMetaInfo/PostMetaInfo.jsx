@@ -5,7 +5,7 @@ import cx from 'classnames';
 import millify from 'millify';
 import _noop from 'lodash/noop';
 
-import PostMetaInfoItem from '../../atoms/PostMetaInfoItem';
+import PostMetaInfoItem from '../PostMetaInfoItem';
 
 function PostMetaInfo({
   className, comments, isLikedByMe, likes, onCommentClick, onLikeClick,

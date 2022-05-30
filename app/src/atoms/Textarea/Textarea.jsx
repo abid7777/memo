@@ -3,14 +3,14 @@ import React, { useRef } from 'react';
 import _noop from 'lodash/noop';
 
 function Textarea({
-  children, forwardRef, textareaClass, value, wrapperClass, onInput,
+  children, forwardRef, textareaClassName, value, wrapperClassName, onInput,
 }) {
   const currValue = useRef(value);
 
   return (
-    <div className={`relative ${wrapperClass}`}>
+    <div className={`relative ${wrapperClassName}`}>
       <div
-        className={`peer p-2 break-words border-b border-b-gray-200 outline-none ${textareaClass}`}
+        className={`peer p-2 break-words border-b border-b-gray-200 outline-none ${textareaClassName}`}
         contentEditable
         data-value=""
         ref={forwardRef}
@@ -28,8 +28,8 @@ function Textarea({
 }
 
 Textarea.propTypes = {
-  textareaClass: PropTypes.string,
-  wrapperClass: PropTypes.string,
+  textareaClassName: PropTypes.string,
+  wrapperClassName: PropTypes.string,
   value: PropTypes.string,
   children: PropTypes.node,
   onInput: PropTypes.func,
@@ -38,8 +38,8 @@ Textarea.propTypes = {
 };
 
 Textarea.defaultProps = {
-  textareaClass: '',
-  wrapperClass: '',
+  textareaClassName: '',
+  wrapperClassName: '',
   value: '',
   children: null,
   onInput: _noop,

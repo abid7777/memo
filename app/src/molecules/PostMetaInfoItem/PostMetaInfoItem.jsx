@@ -2,15 +2,17 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import _noop from 'lodash/noop';
 
+import Button, { VARIANTS } from '../../atoms/Button';
+
 function PostMetaItem({ children, onClick }) {
   return (
-    <button
-      type="button"
+    <Button
       className="group inline-flex flex-row-reverse items-center mt-4"
+      variant={VARIANTS.LINK}
       onClick={onClick}
     >
       {children}
-    </button>
+    </Button>
   );
 }
 

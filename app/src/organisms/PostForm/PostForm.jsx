@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 
 import Button, { VARIANTS } from '../../atoms/Button';
 import FileChooser from '../../atoms/FileChooser';
-import TextareaField from '../../molecules/TextareaField';
-import TextboxField from '../../molecules/TextboxField';
+import { TextareaField, TextboxField } from '../../molecules/FormFields';
 
 function PostForm() {
   const [title, setTitle] = useState('');

@@ -17,7 +17,7 @@ function CommentForm({ onComment }) {
         <div className={cx('shrink-0 w-12 h-12 bg-gray-800 rounded-full')} />
         <TextArea
           forwardRef={ref}
-          wrapperClass="grow w-full lg:w-auto"
+          wrapperClassName="grow w-full lg:w-auto"
           value={comment}
           onInput={setComment}
         />

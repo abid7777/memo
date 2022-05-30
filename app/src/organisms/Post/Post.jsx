@@ -5,7 +5,7 @@ import _noop from 'lodash/noop';
 
 import Image from '../../atoms/Image';
 import PostMetaInfo from '../../molecules/PostMetaInfo';
-import RelativeDate from '../../atoms/RelativeDate';
+import DateTimeInfo from '../../atoms/DateTimeInfo';
 import postReader from '../../readers/post.reader';
 
 function Post({
@@ -42,7 +42,7 @@ function Post({
           {
             _isFunction(renderPostDateTime)
               ? renderPostDateTime(post)
-              : <RelativeDate dateTime={postReader.createdAt(post)} />
+              : <DateTimeInfo dateTime={postReader.createdAt(post)} />
           }
         </div>
       </div>
