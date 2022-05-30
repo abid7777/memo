@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import React from 'react';
 
+import { HEADER_HEIGHT } from './App.constants';
 import Auth from './pages/Auth';
 import CreatorPosts from './pages/CreatorPosts';
 import Home from './pages/Home.page';
@@ -23,7 +24,7 @@ function App() {
           <div className="fixed top-0 left-0 z-30 w-full bg-slate-50/75 shadow-md backdrop-blur-lg">
             <div className="container px-2 mx-auto"><Navbar /></div>
           </div>
-          <div className="container px-2 mx-auto mt-[calc(80px+2rem)]">
+          <div className={`container px-2 mx-auto mt-[calc(${HEADER_HEIGHT}+2rem)]`}>
             <Routes>
               <Route path="/" index element={<Home />} />
               <Route path="posts">

@@ -17,8 +17,12 @@ function PostSkeleton() {
             className="w-12 h-12 rounded-full blur-sm"
           />
         )}
-        renderAuthorName={() => <Skeleton className="h-7" />}
-        renderPostDateTime={() => <Skeleton className="h-4" />}
+        renderPostInfo={() => (
+          <>
+            <Skeleton className="h-7" />
+            <Skeleton className="mt-2 h-2" />
+          </>
+        )}
         renderPostTitle={() => <Skeleton className="h-8" />}
         renderPostImage={() => (
           <div

@@ -2,17 +2,17 @@ import { format } from 'timeago.js';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-function RelativeDate({ className, dateTime }) {
+function DateTimeInfo({ className, dateTime }) {
   return <div className={`text-xs italic text-gray-400 ${className}`}>{format(dateTime)}</div>;
 }
 
-RelativeDate.propTypes = {
+DateTimeInfo.propTypes = {
   className: PropTypes.string,
   dateTime: PropTypes.string.isRequired,
 };
 
-RelativeDate.defaultProps = {
+DateTimeInfo.defaultProps = {
   className: '',
 };
 
-export default RelativeDate;
+export default DateTimeInfo;

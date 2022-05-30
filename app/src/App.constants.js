@@ -38,3 +38,4 @@ export const visiblityAnimationVariants = {
   hidden: { opacity: 0, transition: TRANSITION },
   visible: { opacity: 1, transition: TRANSITION },
 };
+export const HEADER_HEIGHT = '80px';

@@ -5,16 +5,15 @@ import _noop from 'lodash/noop';
 
 import Image from '../../atoms/Image';
 import PostMetaInfo from '../../molecules/PostMetaInfo';
-import DateTimeInfo from '../../atoms/DateTimeInfo';
+import PostOrCommentAuthorInfo from '../../molecules/PostOrCommentAuthorInfo';
 import postReader from '../../readers/post.reader';
 
 function Post({
   post,
   renderAuthorAvatar,
-  renderAuthorName,
-  renderPostDateTime,
   renderPostDesc,
   renderPostImage,
+  renderPostInfo,
   renderPostMetaInfo,
   renderPostTitle,
   onCommentClick,
@@ -27,27 +26,24 @@ function Post({
           {
             _isFunction(renderAuthorAvatar)
               ? renderAuthorAvatar(post)
+              : <Image src={postReader.authorAvatar(post)} alt={postReader.authorName(post)} />
+          }
+        </div>
+        <div className="w-full">
+          {
+            _isFunction(renderPostInfo)
+              ? renderPostInfo(post)
               : (
-                <Image
-                  src={postReader.authorAvatar(post)}
-                  alt={postReader.authorName(post)}
+                <PostOrCommentAuthorInfo
+                  name={postReader.authorName(post)}
+                  dateTime={postReader.createdAt(post)}
                 />
               )
           }
         </div>
-        <div className="w-full">
-          <h3 className="mb-2 text-xl">
-            {_isFunction(renderAuthorName) ? renderAuthorName(post) : postReader.authorName(post)}
-          </h3>
-          {
-            _isFunction(renderPostDateTime)
-              ? renderPostDateTime(post)
-              : <DateTimeInfo dateTime={postReader.createdAt(post)} />
-          }
-        </div>
       </div>
       <div className="mt-8 text-2xl">
-        {_isFunction(renderPostTitle) ? renderPostTitle(post) : postReader.title(post)}
+        { _isFunction(renderPostTitle) ? renderPostTitle(post) : postReader.title(post) }
       </div>
       <div className="mt-8">
         {
@@ -63,21 +59,21 @@ function Post({
       </div>
       <div className="mt-8">
         {
-        _isFunction(renderPostMetaInfo)
-          ? renderPostMetaInfo(post)
-          : (
-            <PostMetaInfo
-              likes={postReader.likesCount(post)}
-              comments={postReader.commentsCount(post)}
-              className="justify-around"
-              onLikeClick={onLikeClick}
-              onCommentClick={onCommentClick}
-            />
-          )
+          _isFunction(renderPostMetaInfo)
+            ? renderPostMetaInfo(post)
+            : (
+              <PostMetaInfo
+                likes={postReader.likesCount(post)}
+                comments={postReader.commentsCount(post)}
+                className="justify-around"
+                onLikeClick={onLikeClick}
+                onCommentClick={onCommentClick}
+              />
+            )
         }
       </div>
       <div className="mt-8">
-        {_isFunction(renderPostDesc) ? renderPostDesc(post) : postReader.desc(post)}
+        { _isFunction(renderPostDesc) ? renderPostDesc(post) : postReader.desc(post) }
       </div>
     </div>
   );
@@ -86,10 +82,9 @@ function Post({
 Post.propTypes = {
   post: PropTypes.shape({}).isRequired,
   renderAuthorAvatar: PropTypes.func,
-  renderAuthorName: PropTypes.func,
-  renderPostDateTime: PropTypes.func,
-  renderPostTitle: PropTypes.func,
   renderPostImage: PropTypes.func,
+  renderPostInfo: PropTypes.func,
+  renderPostTitle: PropTypes.func,
   renderPostMetaInfo: PropTypes.func,
   renderPostDesc: PropTypes.func,
   onCommentClick: PropTypes.func,
@@ -98,10 +93,9 @@ Post.propTypes = {
 
 Post.defaultProps = {
   renderAuthorAvatar: null,
-  renderAuthorName: null,
-  renderPostDateTime: null,
-  renderPostTitle: null,
   renderPostImage: null,
+  renderPostInfo: null,
+  renderPostTitle: null,
   renderPostMetaInfo: null,
   renderPostDesc: null,
   onCommentClick: _noop,
