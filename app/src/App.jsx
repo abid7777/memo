@@ -8,6 +8,7 @@ import Home from './pages/Home.page';
 import Navbar from './organisms/Navbar';
 import NotFound from './pages/NotFound';
 import PostDetail from './pages/PostDetail.page';
+import PostFormWidget from './templates/PostForm.template';
 import Posts from './pages/Posts';
 import UserProfile from './pages/UserProfile';
 
@@ -17,6 +18,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="mb-4">
+        <PostFormWidget />
         <Router>
           <div className="fixed top-0 left-0 z-30 w-full bg-slate-50/75 shadow-md backdrop-blur-lg">
             <div className="container px-2 mx-auto"><Navbar /></div>

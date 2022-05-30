@@ -6,7 +6,7 @@ import React, {
 import cx from 'classnames';
 import _get from 'lodash/get';
 
-import { TRANSITION } from '../App.constants';
+import { TRANSITION, visiblityAnimationVariants } from '../App.constants';
 import Backdrop from '../atoms/Backdrop/Backdrop';
 import ErrorDialog from '../molecules/ErrorDialog';
 import Post from '../organisms/Post';
@@ -17,10 +17,6 @@ import useResize from '../hooks/useResize';
 import withReactQueryErrorBoundary from '../hocs/withReactQueryErrorBoundary';
 import withSuspense from '../hocs/withSuspense';
 
-const backdropVariants = {
-  hidden: { opacity: 0, transition: TRANSITION },
-  visible: { opacity: 1, transition: TRANSITION },
-};
 const errorMessages = {
   404: {
     title: 'Not Found',
@@ -65,7 +61,6 @@ function PostTemplate({ postID }) {
         />
       </div>
       <div>
-
         <AnimatePresence>
           {
             isMobileDevice
@@ -77,25 +72,25 @@ function PostTemplate({ postID }) {
                   initial="hidden"
                   animate="visible"
                   exit="hidden"
-                  variants={backdropVariants}
+                  variants={visiblityAnimationVariants}
                   onClick={() => setIsCommentVisible(false)}
                 />
               )
           }
           {
-              isCommentVisible
-                && (
-                  <motion.div
-                    key="comment-modal"
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    variants={commentsVariants}
-                    className={cx({ 'overflow-auto fixed inset-x-0 bottom-0 z-50 m-auto w-[95%] h-[90%] bg-stone-50 rounded-t-lg shadow-2xl': isMobileDevice })}
-                  >
-                    <PostCommentTemplate postID={postID} isMobileDevice={isMobileDevice} />
-                  </motion.div>
-                )
+            isCommentVisible
+              && (
+                <motion.div
+                  key="comment-modal"
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  variants={commentsVariants}
+                  className={cx({ 'overflow-auto fixed inset-x-0 bottom-0 z-50 m-auto w-[95%] h-[90%] bg-stone-50 rounded-t-lg shadow-2xl': isMobileDevice })}
+                >
+                  <PostCommentTemplate postID={postID} isMobileDevice={isMobileDevice} />
+                </motion.div>
+              )
             }
         </AnimatePresence>
       </div>

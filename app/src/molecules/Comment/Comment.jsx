@@ -20,9 +20,7 @@ function Comment({ comment }) {
             <h4 className="text-sm font-bold">{commentReader.authorName(comment)}</h4>
             <div className="timestamp">{format(commentReader.createdAt(comment))}</div>
           </div>
-          <div className="mt-4">
-            {commentReader.body(comment)}
-          </div>
+          <div className="mt-4">{commentReader.body(comment)}</div>
         </div>
       </div>
     </div>

@@ -17,11 +17,7 @@ function PostCommentList({ comments }) {
 }
 
 PostCommentList.propTypes = {
-  comments: PropTypes.arrayOf(PropTypes.shape({})),
-};
-
-PostCommentList.defaultProps = {
-  comments: [],
+  comments: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export default PostCommentList;

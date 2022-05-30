@@ -3,18 +3,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import _get from 'lodash/get';
 
-import { TRANSITION } from '../App.constants';
+import { visiblityAnimationVariants } from '../App.constants';
 import CommentForm from '../molecules/CommentForm';
 import PostCommentList from '../organisms/PostCommentList';
 import Spinner from '../atoms/Spinner';
 import useComment from '../hooks/api/useComment';
 import withReactQueryErrorBoundary from '../hocs/withReactQueryErrorBoundary';
 import withSuspense from '../hocs/withSuspense';
-
-const variants = {
-  hidden: { opacity: 0, transition: TRANSITION },
-  visible: { opacity: 1, transition: TRANSITION },
-};
 
 function CommentSpinner() {
   return <div className="flex justify-center items-center mt-8 lg:mt-0"><Spinner /></div>;
@@ -25,7 +20,7 @@ function PostCommentTemplate({ postID, isMobileDevice }) {
 
   return (
     <motion.div
-      variants={variants}
+      variants={visiblityAnimationVariants}
       initial="hidden"
       animate="visible"
       exit="hidden"
@@ -35,7 +30,7 @@ function PostCommentTemplate({ postID, isMobileDevice }) {
         <CommentForm isMobileDevice={isMobileDevice} />
       </div>
       <div className="mt-8">
-        <PostCommentList comments={_get(data, 'comments')} />
+        <PostCommentList comments={_get(data, 'comments', [])} />
       </div>
     </motion.div>
   );

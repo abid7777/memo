@@ -8,14 +8,14 @@ import _noop from 'lodash/noop';
 import PostMetaInfoItem from '../../atoms/PostMetaInfoItem';
 
 function PostMetaInfo({
-  likes, comments, className, isLikedByMe, onLikeClick, onCommentClick,
+  className, comments, isLikedByMe, likes, onCommentClick, onLikeClick,
 }) {
   return (
     <div className={`flex justify-between mt-4 ${className}`}>
       <PostMetaInfoItem onClick={onLikeClick}>
         <FaHeart
           className={cx(
-            'w-8 peer text-gray-400 group-hover:text-red-600',
+            'peer w-8 text-gray-400 group-hover:text-red-600',
             { 'text-red-600': isLikedByMe },
           )}
         />
@@ -36,21 +36,21 @@ function PostMetaInfo({
 }
 
 PostMetaInfo.propTypes = {
-  likes: PropTypes.string,
-  comments: PropTypes.string,
   className: PropTypes.string,
+  comments: PropTypes.string,
   isLikedByMe: PropTypes.bool,
-  onLikeClick: PropTypes.func,
+  likes: PropTypes.string,
   onCommentClick: PropTypes.func,
+  onLikeClick: PropTypes.func,
 };
 
 PostMetaInfo.defaultProps = {
-  likes: '0',
-  comments: '0',
   className: '',
+  comments: '0',
   isLikedByMe: false,
-  onLikeClick: _noop,
+  likes: '0',
   onCommentClick: _noop,
+  onLikeClick: _noop,
 };
 
 export default PostMetaInfo;

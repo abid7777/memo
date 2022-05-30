@@ -8,7 +8,7 @@ const DEFAULT_PROPS = {
   'aria-label': 'close backdrop',
   role: 'button',
   tabIndex: 0,
-  className: 'fixed top-0 left-0 z-40 w-screen h-screen bg-gray-800/50 backdrop-blur-lg',
+  className: 'overflow-auto fixed top-0 left-0 z-40 w-screen min-h-screen bg-gray-800/50 backdrop-blur-lg',
 };
 
 function div({ ...props }) {

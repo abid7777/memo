@@ -20,7 +20,11 @@ function RelatedPostErrorDialog({ resetErrorBoundary }) {
         <span>Couldn&apos;t fetch Related posts</span>
       </div>
       <div className="flex justify-center items-center lg:justify-start">
-        <Button onClick={resetErrorBoundary} variant={VARIANTS.DANGER} className="flex gap-1 justify-center items-center">
+        <Button
+          className="flex gap-1 justify-center items-center"
+          variant={VARIANTS.DANGER}
+          onClick={resetErrorBoundary}
+        >
           <span>Try Again</span>
           <IoMdRefresh />
         </Button>

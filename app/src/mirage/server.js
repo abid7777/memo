@@ -71,7 +71,7 @@ export default function create$erver() {
       );
       this.get('/post/:postID', ({ posts }, req) => {
         const { postID } = req.params;
-        const post = posts.findBy({ _id: postID });
+        const post = posts.findOrCreateBy({ _id: postID });
 
         return post || new Response(404, {}, { errors: ['invalid request'] });
 

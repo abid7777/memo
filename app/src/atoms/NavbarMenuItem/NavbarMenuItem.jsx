@@ -11,7 +11,7 @@ const VARIANTS = Object.freeze({
 });
 
 function NavbarMenuItem({
-  className, children, variant, href, onClick,
+  children, className, href, variant, onClick,
 }) {
   return (
     <>
@@ -33,14 +33,13 @@ NavbarMenuItem.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
   variant: PropTypes.oneOf(Object.values(VARIANTS)),
-  href: PropTypes.string,
+  href: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 };
 
 NavbarMenuItem.defaultProps = {
   className: '',
   variant: VARIANTS.LINK,
-  href: '#',
   onClick: _noop,
 };
 

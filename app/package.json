@@ -51,7 +51,6 @@
     "vite-plugin-html": "^3.2.0"
   },
   "dependencies": {
-    "@headlessui/react": "^1.6.2",
     "classnames": "^2.3.1",
     "framer-motion": "^6.3.4",
     "lodash": "^4.17.21",
@@ -63,7 +62,6 @@
     "react-icons": "^4.3.1",
     "react-query": "^3.39.0",
     "react-router-dom": "^6.3.0",
-    "timeago.js": "^4.0.2",
-    "uninstall": "^0.0.0"
+    "timeago.js": "^4.0.2"
   }
 }

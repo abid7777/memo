@@ -19,6 +19,10 @@ module.exports = {
     'react',
     'tailwindcss',
   ],
-  rules: {
+  rules: {},
+  settings: {
+    tailwindcss: {
+      whitelist: ['line-clamp\\-[1-9]'],
+    },
   },
 };

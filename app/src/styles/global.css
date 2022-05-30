@@ -19,6 +19,19 @@
   .timestamp {
     @apply text-xs italic text-gray-400
   }
+
+  .label {
+    @apply absolute label-active peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
+    top-2 left-0 pl-2 transition-transform origin-top-left pointer-events-none
+  }
+
+  .label-active {
+    @apply scale-75 -translate-y-6
+  }
+
+  .textarea[data-value=""] ~ .label {
+    @apply scale-100 translate-y-0
+  }
 }
 
 html, body {

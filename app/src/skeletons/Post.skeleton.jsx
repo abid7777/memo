@@ -29,11 +29,7 @@ function PostSkeleton() {
         renderPostMetaInfo={() => <Skeleton className="h-8" />}
         renderPostDesc={() => (
           <div className="flex flex-col gap-2">
-            <Skeleton className="h-[1rem]" />
-            <Skeleton className="h-[1rem]" />
-            <Skeleton className="h-[1rem]" />
-            <Skeleton className="h-[1rem]" />
-            <Skeleton className="h-[1rem]" />
+            {Skeleton.generate(5, 'h-6')}
           </div>
         )}
       />

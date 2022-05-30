@@ -10,7 +10,7 @@ function TrendingPostListTemplate({ posts }) {
     <div>
       <div>
         <h3 className="flex text-3xl cursor-auto select-none md:text-4xl">
-          Trending Posts
+          <span>Trending Posts</span>
           <Badge count={posts.length} />
           <sup><HiTrendingUp /></sup>
         </h3>

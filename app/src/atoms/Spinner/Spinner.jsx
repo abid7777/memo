@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 function Spinner({ size }) {
-  return (
-    <CgSpinner className="animate-spin" size={size} />
-  );
+  return <CgSpinner className="animate-spin" size={size} />;
 }
 
 Spinner.propTypes = {

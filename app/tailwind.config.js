@@ -8,6 +8,8 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    lineClamp,
+    [lineClamp, [{
+      whitelist: ['line-clamp-2'],
+    }]],
   ],
 };

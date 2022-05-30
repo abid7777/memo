@@ -4,8 +4,8 @@ import _isFunction from 'lodash/isFunction';
 import _noop from 'lodash/noop';
 
 import Image from '../../atoms/Image';
-import RelativeDate from '../../atoms/RelativeDate';
 import PostMetaInfo from '../../molecules/PostMetaInfo';
+import RelativeDate from '../../atoms/RelativeDate';
 import postReader from '../../readers/post.reader';
 
 function Post({
@@ -13,12 +13,12 @@ function Post({
   renderAuthorAvatar,
   renderAuthorName,
   renderPostDateTime,
-  renderPostTitle,
+  renderPostDesc,
   renderPostImage,
   renderPostMetaInfo,
-  renderPostDesc,
-  onLikeClick,
+  renderPostTitle,
   onCommentClick,
+  onLikeClick,
 }) {
   return (
     <div>
@@ -37,9 +37,7 @@ function Post({
         </div>
         <div className="w-full">
           <h3 className="mb-2 text-xl">
-            {
-              _isFunction(renderAuthorName) ? renderAuthorName(post) : postReader.authorName(post)
-            }
+            {_isFunction(renderAuthorName) ? renderAuthorName(post) : postReader.authorName(post)}
           </h3>
           {
             _isFunction(renderPostDateTime)
@@ -79,9 +77,7 @@ function Post({
         }
       </div>
       <div className="mt-8">
-        {
-          _isFunction(renderPostDesc) ? renderPostDesc(post) : postReader.desc(post)
-        }
+        {_isFunction(renderPostDesc) ? renderPostDesc(post) : postReader.desc(post)}
       </div>
     </div>
   );
@@ -96,8 +92,8 @@ Post.propTypes = {
   renderPostImage: PropTypes.func,
   renderPostMetaInfo: PropTypes.func,
   renderPostDesc: PropTypes.func,
-  onLikeClick: PropTypes.func,
   onCommentClick: PropTypes.func,
+  onLikeClick: PropTypes.func,
 };
 
 Post.defaultProps = {
@@ -108,8 +104,8 @@ Post.defaultProps = {
   renderPostImage: null,
   renderPostMetaInfo: null,
   renderPostDesc: null,
-  onLikeClick: _noop,
   onCommentClick: _noop,
+  onLikeClick: _noop,
 };
 
 export default Post;

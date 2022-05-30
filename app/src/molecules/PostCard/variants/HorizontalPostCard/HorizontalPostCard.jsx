@@ -17,7 +17,7 @@ function HorizontalPostCard({ post }) {
       </div>
       <div className="flex flex-col grow py-4 pr-4 w-full">
         <div className="grow">
-          <div><h3 className="text-md line-clamp-2">{postReader.title(post)}</h3></div>
+          <div><h3 className="text-base line-clamp-2">{postReader.title(post)}</h3></div>
         </div>
         <PostMetaInfo
           likes={postReader.likesCount(post)}

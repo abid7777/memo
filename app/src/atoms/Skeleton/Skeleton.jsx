@@ -7,6 +7,16 @@ function Skeleton({ className }) {
   );
 }
 
+Skeleton.generate = (n = 0, className = '') => {
+  const skeletons = [];
+
+  for (let i = 0; i < n; i += 1) {
+    skeletons.push(<Skeleton key={i} className={className} />);
+  }
+
+  return skeletons;
+};
+
 Skeleton.propTypes = {
   className: PropTypes.string,
 };

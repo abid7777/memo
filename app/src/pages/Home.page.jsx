@@ -4,7 +4,7 @@ import _flowRight from 'lodash/flowRight';
 import _get from 'lodash/get';
 
 import ErrorDialog from '../molecules/ErrorDialog';
-import TrendingPostList from '../templates/TrendingPostList.template';
+import TrendingPostListTemplate from '../templates/TrendingPostList.template';
 import useTrendingPost from '../hooks/api/useTrendingPost';
 import withReactQueryErrorBoundary from '../hocs/withReactQueryErrorBoundary';
 import withSuspense from '../hocs/withSuspense';
@@ -18,7 +18,7 @@ function HomeErrorDialog({ resetErrorBoundary }) {
 function Home() {
   const { data } = useTrendingPost();
 
-  return <TrendingPostList posts={_get(data, 'posts')} />;
+  return <TrendingPostListTemplate posts={_get(data, 'posts', [])} />;
 }
 
 HomeErrorDialog.propTypes = {
