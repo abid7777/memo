@@ -6,9 +6,9 @@ import React, {
 import cx from 'classnames';
 import _get from 'lodash/get';
 
+import Alert, { VARIANTS as ALERT_VARIANTS } from '../molecules/Alert';
 import { TRANSITION, visiblityAnimationVariants } from '../App.constants';
 import Backdrop from '../atoms/Backdrop/Backdrop';
-import ErrorDialog from '../molecules/ErrorDialog';
 import Post from '../organisms/Post';
 import PostCommentTemplate from './PostComment.template';
 import PostSkeleton from '../skeletons/Post.skeleton';
@@ -32,7 +32,8 @@ function PostErrorDialog({ resetErrorBoundary, error }) {
   const postErrorMessage = errorMessages[error.statusCode] || errorMessages.default;
 
   return (
-    <ErrorDialog
+    <Alert
+      variant={ALERT_VARIANTS.DANGER}
       title={postErrorMessage.title}
       body={postErrorMessage.body}
       onTryAgain={resetErrorBoundary}

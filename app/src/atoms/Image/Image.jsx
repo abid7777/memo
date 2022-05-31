@@ -1,18 +1,59 @@
+import { AnimatePresence, motion } from 'framer-motion';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import cx from 'classnames';
+
+import { visiblityAnimationVariants } from '../../App.constants';
+import Skeleton from '../Skeleton';
 
 function Image({
-  className, src, alt, width, height, loading,
+  alt, className, height, loading, src, width,
 }) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const image = new window.Image(width, height);
+    image.src = src;
+    image.onload = () => setIsLoading(false);
+
+    return () => {
+      image.onload = null;
+    };
+  }, []);
+
   return (
-    <img
-      className={className}
-      src={src}
-      alt={alt}
-      width={width}
-      height={height}
-      loading={loading}
-    />
+    <AnimatePresence>
+      {
+        isLoading && (
+          <motion.div
+            key="image-loader"
+            variants={visiblityAnimationVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+          >
+            <Skeleton className={cx('aspect-square object-cover w-full h-full', className)} />
+          </motion.div>
+        )
+      }
+      {
+        !isLoading && (
+          <motion.img
+            key="image-loader"
+            alt={alt}
+            className={cx('aspect-square object-cover', className)}
+            height={height}
+            loading={loading}
+            src={src}
+            width={width}
+            variants={visiblityAnimationVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+          />
+        )
+      }
+    </AnimatePresence>
   );
 }
 

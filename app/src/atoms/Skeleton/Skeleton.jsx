@@ -3,7 +3,7 @@ import React from 'react';
 
 function Skeleton({ className }) {
   return (
-    <div className={`w-full h-7 text-transparent bg-gray-200 animate-pulse ${className}`} />
+    <div className={`w-full text-transparent bg-gray-200 animate-pulse ${className}`} />
   );
 }
 

@@ -1,6 +1,6 @@
 import { HiTrendingUp } from 'react-icons/hi';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { memo } from 'react';
 
 import Badge from '../atoms/Badge';
 import PostCardList from '../organisms/PostCardList/PostCardList';
@@ -28,4 +28,4 @@ TrendingPostListTemplate.defaultProps = {
   posts: [],
 };
 
-export default TrendingPostListTemplate;
+export default memo(TrendingPostListTemplate);

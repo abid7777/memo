@@ -7,7 +7,7 @@ import Button, { VARIANTS } from '../../atoms/Button';
 function PostMetaItem({ children, onClick }) {
   return (
     <Button
-      className="group inline-flex flex-row-reverse items-center mt-4"
+      className="group inline-flex flex-row-reverse items-center px-0 mt-4"
       variant={VARIANTS.LINK}
       onClick={onClick}
     >
