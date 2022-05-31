@@ -13,7 +13,11 @@ function HorizontalPostCard({ post }) {
       className="flex gap-5 w-full hover:bg-slate-50 rounded-md border border-gray-200 shadow-lg transition-colors cursor-pointer"
     >
       <div className="shrink-0 w-32 h-full">
-        <Image src={postReader.image(post)} alt={postReader.title(post)} className="object-cover w-full h-full aspect-none" />
+        <Image
+          alt={postReader.title(post)}
+          className="object-cover w-full h-full aspect-none"
+          src={postReader.image(post)}
+        />
       </div>
       <div className="flex overflow-hidden flex-col grow py-4 pr-4 w-full">
         <div className="grow min-w-0">

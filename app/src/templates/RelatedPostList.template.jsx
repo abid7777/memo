@@ -69,6 +69,9 @@ RelatedPostListTemplate.propTypes = {
 };
 
 export default withReactQueryErrorBoundary(
-  withSuspense(RelatedPostListTemplate, <RelatedPostSpinner />),
+  withSuspense(
+    RelatedPostListTemplate,
+    <div className="h-20"><RelatedPostSpinner /></div>,
+  ),
   RelatedPostErrorDialog,
 );

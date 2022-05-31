@@ -9,7 +9,7 @@ function PostForm() {
   const [title, setTitle] = useState('');
 
   return (
-    <div>
+    <div className="p-4 w-full rounded-md border shadow-lg md:w-4/6 lg:w-2/6">
       <h3 className="text-xl text-center">Create your Memo</h3>
       <div className="flex flex-col gap-10 mt-8">
         <div><TextboxField labelText="Title" value={title} onInput={setTitle} /></div>

@@ -12,7 +12,7 @@ function VerticalPostCard({ post }) {
       to={`/posts/${postReader.id(post)}`}
       className="flex overflow-hidden flex-col w-full hover:bg-slate-50 rounded-md shadow-lg transition-colors cursor-pointer"
     >
-      <Image src={postReader.image(post)} alt={postReader.title(post)} className="grow-0" />
+      <Image alt={postReader.title(post)} src={postReader.image(post)} className="grow-0" />
       <div className="flex flex-col grow p-4">
         <div className="grow">
           <div><h3 className="text-xl line-clamp-2">{postReader.title(post)}</h3></div>

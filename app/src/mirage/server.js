@@ -2,12 +2,16 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 import {
-  Factory, Model, Response, Serializer, createServer, belongsTo, hasMany,
+  Factory, Model, Serializer, createServer, belongsTo, hasMany,
 } from 'miragejs';
 import { faker } from '@faker-js/faker';
 
 import { commentFactory, userFactory, postFactory } from './factories';
+import {
+  createComment, createList, createPost, createUser, getRandomErrorResponse,
+} from './utils';
 
+const ERROR_PROBABILITY = 0.05;
 const ApplicationSerializer = Serializer.extend();
 
 export default function create$erver() {
@@ -50,11 +54,7 @@ export default function create$erver() {
       this.post('/user', ({ users }) => {
         const id = faker.random.alphaNumeric(12);
         const user = {
-          _id: id,
-          name: faker.name.findName(),
-          avatar: faker.image.avatar(),
-          createdAt: faker.date.past(),
-          updatedAt: faker.date.past(),
+          ...createUser(id),
           token: { id },
         };
 
@@ -63,20 +63,22 @@ export default function create$erver() {
       this.get('/post', () => this.schema.posts.all());
       this.get(
         'post/trending',
-        () => this.schema.posts.all().slice(0, 10)
-        // this.schema.posts.all().slice(0, 10)
-        // new Response(400, {}, { errors: ['invalid request'] })
-        // this.schema.posts.all().slice(0, 10 + Math.floor(Math.random() * 10));
-        ,
+        () => (Math.random() > ERROR_PROBABILITY
+          ? this.schema.posts.all().slice(0, 10)
+          : getRandomErrorResponse()),
       );
-      this.get('/post/:postID', ({ posts }, req) => {
+      this.get('/post/:postID', ({ comments, posts, users }, req) => {
         const { postID } = req.params;
-        const post = posts.findOrCreateBy({ _id: postID });
+        const post = posts.findBy({ _id: postID }) || posts.create({
+          ...createPost(postID),
+          author: users.create(createUser()),
+          comments: createList(
+            5,
+            () => comments.create({ ...createComment(), author: users.create(createUser()) }),
+          ),
+        });
 
-        return post || new Response(404, {}, { errors: ['invalid request'] });
-
-        // new Response(400, {}, { errors: ['invalid request'] });
-        // posts.findBy({ _id: postID });
+        return Math.random() > ERROR_PROBABILITY ? post : getRandomErrorResponse();
       });
       this.get('/post/:postID/comments', (_, req) => {
         const { postID } = req.params;
@@ -84,9 +86,9 @@ export default function create$erver() {
 
         return post ? post.comments : [];
       });
-      this.get('/post/related/:postID', ({ posts }) => (Math.random() > 0.5
+      this.get('/post/related/:postID', ({ posts }) => (Math.random() > ERROR_PROBABILITY
         ? posts.all().slice(0, 10 + Math.floor(Math.random() * 10))
-        : new Response(404, {}, { errors: ['not found'] })));
+        : getRandomErrorResponse()));
     },
   });
 }

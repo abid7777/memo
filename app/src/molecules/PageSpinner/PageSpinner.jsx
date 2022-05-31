@@ -1,11 +1,10 @@
 import React from 'react';
 
-import { HEADER_HEIGHT } from '../../App.constants';
 import Spinner from '../../atoms/Spinner';
 
 function PageSpinner() {
   return (
-    <div className={`flex fixed top-[${HEADER_HEIGHT}] left-0 justify-center items-center w-screen h-screen`}>
+    <div className="flex fixed top-[var(--header-height)] left-0 justify-center items-center w-screen h-[calc(100vh-var(--header-height))]">
       <Spinner />
     </div>
   );

@@ -9,7 +9,7 @@ function Textbox({
     <div className="relative">
       <input
         type="text"
-        className={`pb-1 bg-slate-50 border-b border-b-gray-200 outline-none ${className}`}
+        className={`pb-1 bg-transparent border-b border-b-gray-200 outline-none ${className}`}
         placeholder={placeholder}
         value={value}
         onInput={(e) => onInput(e.target.value)}

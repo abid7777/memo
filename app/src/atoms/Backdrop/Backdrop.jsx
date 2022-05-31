@@ -16,7 +16,7 @@ function div({ ...props }) {
 }
 
 function Backdrop({
-  as, className, onClick, ...restProps
+  as, className, ...restProps
 }) {
   const Component = as || div;
 
@@ -25,8 +25,6 @@ function Backdrop({
       {...DEFAULT_PROPS}
       className={`${DEFAULT_PROPS.className} ${className}`}
       {...restProps}
-      onClick={onClick}
-      onTouchStart={onClick}
     />
   );
 }

@@ -5,7 +5,7 @@ export const VARIANTS = Object.freeze({
 });
 
 export const STYLES = Object.freeze({
-  [VARIANTS.PRIMARY]: 'bg-gray-800 text-slate-50',
-  [VARIANTS.DANGER]: 'bg-red-600 text-slate-50',
+  [VARIANTS.PRIMARY]: 'text-slate-50 bg-gray-800',
+  [VARIANTS.DANGER]: 'text-red-700 bg-red-300',
   [VARIANTS.LINK]: '',
 });

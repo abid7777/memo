@@ -16,9 +16,7 @@ function Image({
     image.src = src;
     image.onload = () => setIsLoading(false);
 
-    return () => {
-      image.onload = null;
-    };
+    return () => { image.onload = null; };
   }, []);
 
   return (
